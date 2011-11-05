@@ -1,4 +1,4 @@
-Create DOM Elements with nestable arrays that reflect the structure of HTML.
+Create DOM Elements with nestable arrays that reflect the structure of HTML:
 
 ```javascript
 document.body.appendChild(create(
@@ -19,7 +19,7 @@ document.body.appendChild(create(
 ))
 ```
 
-Results in...
+Results in:
 
 ```html
 <div id="content">
@@ -35,14 +35,14 @@ Results in...
 It all happens with one function: **create**
 
 ```javascript
-create([TAGNAME, ATTRIBUTES, CHILDREN/CONTENT]) // returns a native DOM element
+create([TAGNAME, ATTRIBUTES, CHILDREN|CONTENT]) // returns a native DOM element
 create(["a", { href: "http://google.com" }, "Google"]);
 ```
 
 Why?
 ===========
-* Templating languages are awkward. Stay in the language you know and love instead of switching back-and-worth between HTML, Javascript, and your templating language.
-* Properly formatted arguments reflect the actual structure of HTML.
+* Templating languages are awkward.
+* Properly formatted input reflects the actual structure of HTML.
 * Implement view composition using familiar structures (functions!)
 * Leverage existing Javascript skills directly in the view.
 
@@ -81,6 +81,23 @@ create(["fragment", [
 <p>Third paragraph I'm bored</p>
 ```
 
+Arguments that resolve to null or undefined are ignored:
+-----------
+
+```javascript
+var showOptions = false;
+create(["div", [
+	showOptions ? ["a", { href: "/options" }, "Options"] : null,
+	["p", "I think you've run out of options."]
+]]);
+```
+
+```html
+<div>
+	<p>I think you've run out of options.</p>
+</div>
+```
+
 Highly compatible with underscore and functional programming
 -----------
 
@@ -111,7 +128,7 @@ create(["ul", _.map(links, buildLinkItem)])
 Unit Tests
 -----------
 
-**creatable** has full unit test coverage using qunit.
+**creatable** has full [unit test coverage](https://github.com/RaineOrShine/creatable/tree/master/test) using qunit.
 
 Installation
 -----------
