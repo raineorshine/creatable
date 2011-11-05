@@ -1,4 +1,5 @@
-Write HTML in Javascript:
+Write HTML purely in Javascript:
+
 ```javascript
 document.body.appendChild(create(
 	["#content", [
@@ -15,5 +16,13 @@ document.body.appendChild(create(
 			]]
 		]]
 	]]
-));
+))
+```
+
+Produces this:
+
+```html
+<div id="content">
+<h1 class="prominent">
+Blogs</h1><ul><li><a href="http://functionsource.com">FunctionSource</a></li><li><a href="http://javascriptweblog.wordpress.com">Javascript, Javascript</a></li><li><a href="http://ejohn.org/category/blog">John Resig</a></li></ul></div>
 ```
