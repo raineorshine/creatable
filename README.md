@@ -1,4 +1,4 @@
-Write HTML in pure Javascript:
+Write HTML without leaving Javascript land. Create DOM Elements with nestable arrays that reflect the structure of HTML.
 
 ```javascript
 document.body.appendChild(create(
@@ -19,7 +19,7 @@ document.body.appendChild(create(
 ))
 ```
 
-Produces this:
+Results in...
 
 ```html
 <div id="content">
@@ -35,5 +35,6 @@ Produces this:
 It all happens with one function: create
 
 ```javascript
-create(TAGNAME, ATTRIBUTES, CHILDREN/CONTENT)
+create([TAGNAME, ATTRIBUTES, CHILDREN/CONTENT])
+create(["a", { href: "http://google.com" }, "Google"]);
 ```

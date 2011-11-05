@@ -1,7 +1,6 @@
-/** 
- * Create DOM Elements from JsonML or custom types. (No Dependencies!)
- * See: http://jsonml.org
- * Last Updated: 09/14/11
+/** Write HTML without leaving Javascript land. Create DOM Elements with nestable arrays that reflect the structure of HTML.
+	@author	Raine Lourie
+	@note	Created independently from JsonML (http://jsonml.org).
  */
 
 this.Creatable = (function() {
