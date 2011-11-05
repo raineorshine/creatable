@@ -147,10 +147,10 @@ this.Creatable = (function() {
 
 		/** A list of objects that the create function can create DOM elements from. */
 		types: [
-			// JsonML
+			// array
 			{
-				isOfType: function(o) { return Creatable.isJsonML(o); },
-				build: function(o) { return Creatable.parseJsonML(o); }
+				isOfType: function(o) { return Creatable.isMarkupArray(o); },
+				build: function(o) { return Creatable.parseMarkupArray(o); }
 			},
 			// content
 			{
@@ -164,7 +164,7 @@ this.Creatable = (function() {
 			},
 			// DOM node
 			{
-				isOfType: function(o) { return Creatable.isDomNode(o); }, // this is a little wonky that I can't refer to Creatable directly yet
+				isOfType: function(o) { return Creatable.isDomNode(o); },
 				build: function(o) { return o; }
 			},
 			// jQuery
@@ -180,8 +180,8 @@ this.Creatable = (function() {
 		 * Parsing Functions
 		 ******************************************/
 
-		/** Parses the given JsonML s-expression and returns a newly created element. */
-		parseJsonML: function(sexp) {
+		/** Parses the given markup array and returns a newly created element. */
+		parseMarkupArray: function(sexp) {
 
 			var attrsOmitted = typeOf(sexp[1]) !== "object";
 
@@ -292,10 +292,10 @@ this.Creatable = (function() {
 			return node && typeof node.nodeType == "number";
 		},
 		
-		/** Returns true if the given object is a valid JsonML array. */
-		isJsonML: function(arr) {
+		/** Returns true if the given object is a valid markup array. */
+		isMarkupArray: function(arr) {
 			return arr instanceof Array;
-				// omit further tests for performance. arrays are assumed to be JsonML
+				// omit further tests for performance.
 			   //arr.length >= 1 && arr.length <= 3 &&	// 1, 2, or 3 items
 			   //typeof arr[0] === "string"				// tagname is a string
 		},

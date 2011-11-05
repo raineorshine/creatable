@@ -125,13 +125,31 @@ create(["ul", _.map(links, buildLinkItem)])
 </ul>
 ```
 
-Unit Tests
+Built-in support for jQuery elements
 -----------
+```javascript
+create(["#myModule", [
+	["h1", "This is a header"],
+	"Some text.",
+	$("<div><p>Go, Go jQuery</p></div>")
+]])
+```
+
+```html
+<div id="myModule">
+	<h1>This is a header</h1>
+	Some text.
+	<div><p>Go, Go jQuery</p></div>
+</div>
+```
+
+Unit Tests
+===========
 
 **creatable** has full [unit test coverage](https://github.com/RaineOrShine/creatable/tree/master/test) using qunit.
 
 Installation
------------
+===========
 
 Include creatable.1.0.js in your HTML:
 
