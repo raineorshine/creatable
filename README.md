@@ -43,7 +43,7 @@ Why?
 ===========
 * Templating languages are awkward.
 * Properly formatted input reflects the actual structure of HTML.
-* Implement view composition using familiar structures (functions!)
+* Implement view composition using familiar structures (functions!).
 * Leverage existing Javascript skills directly in the view.
 
 Features
@@ -81,7 +81,7 @@ create(["fragment", [
 <p>Third paragraph I'm bored</p>
 ```
 
-Arguments that resolve to null or undefined are ignored:
+Arguments that resolve to null or undefined are ignored
 -----------
 
 ```javascript
