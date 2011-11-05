@@ -32,7 +32,7 @@ Results in...
 </div>
 ```
 
-It all happens with one function: create
+It all happens with one function: **create**
 
 ```javascript
 create([TAGNAME, ATTRIBUTES, CHILDREN/CONTENT]) // returns a native DOM element
@@ -111,7 +111,7 @@ create(["ul", _.map(links, buildLinkItem)])
 Unit Tests
 -----------
 
-*creatable* has full unit test coverage using qunit.
+**creatable** has full unit test coverage using qunit.
 
 Installation
 -----------
@@ -121,3 +121,10 @@ Include creatable.1.0.js in your HTML:
 ```html
 <script src="creatable.1.0.js"></script>
 ```
+
+If you want to avoid conflicts with the global 'create' function, comment out the last line of the source and use the namespaced version:
+
+```javascript
+Creatable.create(["input", { type: "button", value: "Go!" }])
+```
+
