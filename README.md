@@ -42,9 +42,9 @@ create(["a", { href: "http://google.com" }, "Google"]);
 Why?
 ===========
 * Templating languages are awkward.
-* Properly formatted input reflects the actual structure of HTML.
-* Implement view composition using familiar structures (functions!).
 * Leverage existing Javascript skills directly in the view.
+* Implement view composition using familiar structures (functions!).
+* Properly formatted input nicely reflects the actual structure of HTML.
 
 Features
 ===========
