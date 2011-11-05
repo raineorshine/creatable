@@ -1,4 +1,4 @@
-Write HTML without leaving Javascript land. Create DOM Elements with nestable arrays that reflect the structure of HTML.
+Create DOM Elements with nestable arrays that reflect the structure of HTML.
 
 ```javascript
 document.body.appendChild(create(
