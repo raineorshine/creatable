@@ -20,7 +20,7 @@
 <script>
 
 // DOM test helper methods
-var isEl = function(el, nodeName) { return el && el.nodeType === 1 && el.nodeName == nodeName; };
+var isEl = function(el, nodeName) { return el && el.nodeType === 1 && el.nodeName.toUpperCase() == nodeName.toUpperCase(); };
 
 $(function() {
 	test("null or undefined", function() {
@@ -137,6 +137,24 @@ $(function() {
 			["div"], ["a"], ["a"]
 		]]);
 		ok(el && el.nodeType === 11 && el.childNodes && el.childNodes.length === 3, "create a document fragment");
+	});
+
+	test("descendants", function() {
+		
+		var el = create(["section p"]);
+		ok(isEl(el, "section"), "returned element is the parent");
+		ok(isEl(el.firstChild, "p"), "returned element has a child element");
+
+		el = create(["div ul li a", { href: "http://google.com" }, "Google" ]);
+		ok(isEl(el, "div"), "returned element is the top level parent");
+		ok(isEl(el.firstChild, "ul") && isEl(el.firstChild.firstChild, "li"), "returned element can contain multiple descendants separated by spaces within the markup object selector");
+
+		var a = el.firstChild.firstChild.firstChild;
+		ok( isEl(a, "a") && 
+			a.attributes.length === 1 && 
+			a.getAttribute("href") == "http://google.com" &&
+			a.firstChild && a.firstChild.nodeType === 3 && a.firstChild.nodeValue === "Google", 
+			"attributes and content of the JSONML object are applied to the final descendant");
 	});
 });
 </script>

@@ -136,6 +136,15 @@ this.Creatable = (function() {
 		};
 	};
 
+	var splitOnce = function(str, delim) {
+		var components = str.split(delim);
+		var result = [components.shift()];
+		if(components.length) {
+			result.push(components.join(delim));
+		}
+		return result;
+	};
+
 	// public interface
 	return {
 
@@ -185,13 +194,24 @@ this.Creatable = (function() {
 
 			var attrsOmitted = typeOf(sexp[1]) !== "object";
 
-			var tagNameString = sexp[0];
+			var tagInput = sexp[0];
 			var attrs = !attrsOmitted ? sexp[1] : {};
 			var children = sexp[attrsOmitted ? 1 : 2];
 
+			// split the tag input by spaces to extract descendants
+			var tags = splitOnce(tagInput, " ");
+			var tagNameString = tags[0];
+			var descendantTags = tags[1];
+			
+			if(descendantTags) {
+				children = [[descendantTags, attrs, children]];
+				attrs = {};
+			}
+
 			// create the element and parse its attributes and children
 			var element = tagNameString == "fragment" ?
-				document.createDocumentFragment() : document.createElement(Creatable.parseTagName(tagNameString));
+				document.createDocumentFragment() : 
+				document.createElement(Creatable.parseTagName(tagNameString));
 			
 			// queue custom attribute plugins. they aren't executed immediately because we need to remove the plugin attributes and add the children and normal attributes
 			var pluginActions = [];
