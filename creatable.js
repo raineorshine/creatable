@@ -130,9 +130,9 @@ this.Creatable = (function() {
 	
 	var curry = function(/*args...*/) {
 		var fn = arguments[0];
-		var args = Array.slice(arguments, 1);
+		var args = Array.prototype.slice.call(arguments, 1);
 		return function() {
-			return fn.apply(this, args.concat(Array.slice(arguments, 0)));
+			return fn.apply(this, args.concat(Array.prototype.slice.call(arguments, 0)));
 		};
 	};
 
@@ -183,7 +183,14 @@ this.Creatable = (function() {
 			}
 		],
 
-		plugins: {},
+		plugins: {
+			// insert content as unescaped HTML with { html: true }
+			html: function(el, html) {
+				if(html) {
+					el.innerHTML = el.firstChild.nodeValue;
+				}
+			}
+		},
 
 		/******************************************
 		 * Parsing Functions

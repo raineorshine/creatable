@@ -154,7 +154,32 @@ $(function() {
 			a.attributes.length === 1 && 
 			a.getAttribute("href") == "http://google.com" &&
 			a.firstChild && a.firstChild.nodeType === 3 && a.firstChild.nodeValue === "Google", 
-			"attributes and content of the JSONML object are applied to the final descendant");
+
+			"attributes and content of the JSONML object are applied to the final descendant"
+		);
+	});
+
+	test("inserting content as unescaped HTML", function() {
+
+		var el = create(["p", "This is a paragraph with a link to <a href='http://google.com'>Google</a>"]);
+		ok(isEl(el, "p") && el.firstChild && el.firstChild.nodeType === 3 && el.firstChild.nodeValue === "This is a paragraph with a link to <a href='http://google.com'>Google</a>", "String content is added as text by default, not HTML.");
+
+		el = create(["p", { html: true }, "This is a paragraph with a link to <a href='http://google.com'>Google</a>."]);
+		console.log(el);
+		ok(isEl(el, "p") && 
+			el.childNodes.length === 3 &&
+			el.childNodes[0].nodeType === 3 && 
+			el.childNodes[0].nodeValue === "This is a paragraph with a link to " &&
+			isEl(el.childNodes[1], "a") &&
+			el.childNodes[1].getAttribute("href") === "http://google.com" &&
+			el.childNodes[1].firstChild &&
+			el.childNodes[1].firstChild.nodeType === 3 &&
+			el.childNodes[1].firstChild.nodeValue == "Google" &&
+			el.childNodes[2].nodeType === 3 && 
+			el.childNodes[2].nodeValue === ".", 
+			
+			"Insert unescaped HTML as content"
+		);
 	});
 });
 </script>
