@@ -1,1 +1,44 @@
-My GitHub Pag
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="Stylesheet" type="text/css" href="style/normalize.css"/>
+<link rel="Stylesheet" type="text/css" href="style/fonts.css"/>
+<link rel="Stylesheet" type="text/css" href="style/prettify.css"/>
+<link rel="Stylesheet" type="text/css" href="style/main.css"/>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<title>Creatable - Pure Javascript client-side templating</title>
+</head>
+<body>
+
+<script src="scripts/lib/LAB.min.js"></script>
+<script>
+$LAB
+	//.script("https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+	//.script("http://documentcloud.github.com/underscore/underscore-min.js")
+	.script("scripts/lib/jquery.1.7.1.min.js")
+	.script("scripts/lib/functional.min.js") // must occur before underscore so _ is overridden
+	.script("scripts/lib/underscore-1.1.7.min.js")
+	.script("scripts/lib/jquery.livequery.js")
+	.script("scripts/lib/json2.js")
+	.script("scripts/lib/Markdown.Converter.js")
+	.script("scripts/lib/google-code-prettify/prettify.js")
+	.script("scripts/source/rjs.2.0.js")
+	.script("scripts/source/rjs.2.0-proto.js")
+	.script("scripts/source/underscore-proto.js")
+	.script("scripts/source/underscore-functional.js")
+	.script("scripts/source/creatable.1.2.js")
+	.script("scripts/source/creatable-array-ext.1.0.js")
+	.script("scripts/source/creatable-ext.js")
+	.script("scripts/app.coffee.js")
+	.script("scripts/readme-escaped.js");
+</script>
+</body>
+</html>
