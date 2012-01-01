@@ -355,6 +355,17 @@ this.Creatable = (function() {
 		/** Abstracts the error handling for Creatable so that we can substitute a different handler if necessary. */
 		error: function(message) {
 			throw new Error(message || "ERROR");
+		},
+
+		/******************************************
+		 * Render Helper
+		 ******************************************/
+		render: function(sexp) {
+			var body = document.body;
+			while(body.firstChild) {
+				body.removeChild(body.firstChild);
+			}
+			body.appendChild(Creatable.create(sexp));
 		}
 	};
 })();
