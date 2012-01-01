@@ -35,10 +35,10 @@ create(["a", { href: "http://google.com" }, "Google"]);
 
 Why?
 ===========
-* Templating languages are awkward.
-* Leverage existing Javascript skills directly in the view.
-* Implement view composition using familiar structures (functions!).
-* Properly formatted input nicely reflects the actual structure of HTML.
+* Switching in and out of Javascript and whatever templating language you use is ugly.
+* No special templating language syntax. 100% pure Javascript.
+* Implement view composition using plain, old functions.
+* Properly formatted input still reflects the actual structure of HTML for readability.
 
 Features
 ===========
@@ -145,15 +145,9 @@ Unit Tests
 Installation
 ===========
 
-Include creatable.1.0.js in your HTML:
+Just include creatable.js in your HTML:
 
 ```html
-<script src="creatable.1.0.js"></script>
-```
-
-If you want to avoid conflicts with the global 'create' function, comment out the last line of the source and use the namespaced version:
-
-```javascript
-Creatable.create(["input", { type: "button", value: "Go!" }])
+<script src="creatable.js"></script>
 ```
 
