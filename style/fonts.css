@@ -1,0 +1,80 @@
+@media screen {
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url('http://themes.googleusercontent.com/static/fonts/ubuntu/v3/kbP_6ONYVgE-bLa9ZRbvvvesZW2xOQ-xsNqO47m55DA.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url('http://themes.googleusercontent.com/static/fonts/ubuntu/v3/0ihfXUL2emPh0ROJezvraD8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Play-Bold'), url('http://themes.googleusercontent.com/static/fonts/play/v2/ZzUearZLklGfoL18Ti0GaQ.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url('http://themes.googleusercontent.com/static/fonts/ubuntu/v3/OMD20Sg9RTs7sUORCEN-7YbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu'), url('http://themes.googleusercontent.com/static/fonts/ubuntu/v3/_xyN3apAT_yRRDeqB3sPRg.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Ubuntu Mono Bold Italic'), local('UbuntuMono-BoldItalic'), url('http://themes.googleusercontent.com/static/fonts/ubuntumono/v2/n_d8tv_JOIiYyMXR4eaV9QRV2F9RPTaqyJ4QibDfkzM.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url('http://themes.googleusercontent.com/static/fonts/ubuntumono/v2/ceqTZGKHipo8pJj4molytjqR_3kx9_hJXbbyU8S6IN0.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url('http://themes.googleusercontent.com/static/fonts/ubuntumono/v2/KAKuHXAHZOeECOWAHsRKA9kZXW4sYc4BjuAIFc1SXII.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url('http://themes.googleusercontent.com/static/fonts/ubuntumono/v2/ViZhet7Ak-LRXZMXzuAfkYbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
+}
+@media screen {
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Play'), url('http://themes.googleusercontent.com/static/fonts/play/v2/-SXnV4mZjf4oh1IBw13WZw.woff') format('woff');
+}
+}

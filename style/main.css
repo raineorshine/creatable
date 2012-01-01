@@ -1,0 +1,43 @@
+body {
+  color: #212121;
+  font-family: Ubuntu;
+  background-image: url("../images/pattern_129.gif");
+}
+a {
+  color: #5da9e3;
+}
+heading h1 {
+  font-size: 80px;
+  margin-bottom: 5px;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #e2975d;
+  margin-top: 0;
+}
+pre.prettyprint {
+  font-size: 14px;
+  background-color: rgba(255,255,255,0.80);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+#page {
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.80);
+  margin: 20px auto 100px auto;
+  width: 850px;
+}
+#fork {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

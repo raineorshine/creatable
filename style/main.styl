@@ -1,0 +1,75 @@
+/******************************
+ * Color Definitions
+ ******************************/
+nearblack =     #212121
+marinara =      #E2975D
+cottontail =    #E7CB8A
+drydirt =       #948252
+blue =          #5DA9E3
+
+/******************************
+ * Fonts
+ ******************************/
+//@font-face { font-family: Winchester; src: url("fonts/1873_Winchester.ttf"); }
+
+
+/******************************
+ * Functions
+ ******************************/
+vendor(prop, args)
+  -moz-{prop} args
+  -webkit-{prop} args
+  {prop} args
+
+border-radius()
+  vendor('border-radius', arguments)
+
+box-shadow()
+  vendor('box-shadow', arguments)
+
+
+/******************************
+ * Defaults
+ ******************************/
+body
+  color nearblack
+  font-family Ubuntu
+  background-image url(../images/pattern_129.gif)
+
+a
+  color blue
+
+heading h1
+  font-size 80px
+  margin-bottom 5px
+
+h1,h2,h3,h4,h5
+  color marinara
+  margin-top 0
+
+pre.prettyprint
+  font-size 14px
+  background-color rgba(255,255,255, 0.8)
+  border-radius 10px
+  padding 10px
+
+
+/******************************
+ * Page Elements
+ ******************************/
+#page
+  position relative
+  border-radius 10px
+  padding 20px
+  background-color rgba(255,255,255, 0.8)
+  margin 20px auto 100px auto
+  width 850px
+
+#fork
+  position absolute
+  top 0
+  right 0
+
+/******************************
+ * Components
+ ******************************/
