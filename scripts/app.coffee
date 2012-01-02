@@ -8,8 +8,8 @@ convertGFM = (mkd) ->
 		if line.startsWith("```")
 			indentMode = !indentMode
 			""
-		else if indentMode 
-			"\t#{line}" 
+		else if indentMode
+			"\t#{line}"
 		else
 			line
 	newLines.join("\n")
@@ -24,7 +24,10 @@ build = () ->
 			["h1", "Creatable"],
 			["h2.subtitle", "Pure Javascript client-side templating."]
 		]],
-		["#main", { html: true }, converter.makeHtml(convertGFM(readme))],
+		["#main", buildAjaxModule({
+			url:	"../text/README.md",
+			build:  (content) -> converter.makeHtml(convertGFM(content))
+		}],
 		["footer ul", [
 			["li", "Author: Raine Lourie"],
 			["li", [
