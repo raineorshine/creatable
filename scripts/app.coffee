@@ -1,3 +1,7 @@
+log = (msg) ->
+	console.log(msg)
+	msg
+
 converter = new Markdown.Converter
 
 # Convert Github Flavored Markdown to normal markdown
@@ -24,10 +28,13 @@ build = () ->
 			["h1", "Creatable"],
 			["h2.subtitle", "Pure Javascript client-side templating."]
 		]],
-		["#main", buildAjaxModule({
-			url:	"text/README.md",
-			build:  (content) -> converter.makeHtml(convertGFM(content))
-		})],
+		["#main", [
+			buildAjaxModule({
+				url:		"text/README.md"
+				build:		(content) -> ["div", { html: true }, converter.makeHtml(convertGFM(content))]
+				postBuild:	prettify
+			})
+		]],
 		["footer ul", [
 			["li", "Author: Raine Lourie"],
 			["li", [
@@ -36,7 +43,9 @@ build = () ->
 		]]
 	]]
 
+prettify = (el) ->
+	$("code", el).wrap(create(["pre.prettyprint"]))
+	prettyPrint()
+
 $ ->
 	Creatable.render(build())
-	$("code").wrap(create(["pre.prettyprint"]))
-	prettyPrint()

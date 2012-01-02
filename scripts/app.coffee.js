@@ -1,5 +1,9 @@
 (function() {
-  var build, convertGFM, converter;
+  var build, convertGFM, converter, log, prettify;
+  log = function(msg) {
+    console.log(msg);
+    return msg;
+  };
   converter = new Markdown.Converter;
   convertGFM = function(mkd) {
     var indentMode, line, lines, newLines;
@@ -30,12 +34,19 @@
             ]
           ]
         ], ["heading", [["h1", "Creatable"], ["h2.subtitle", "Pure Javascript client-side templating."]]], [
-          "#main", buildAjaxModule({
-            url: "text/README.md",
-            build: function(content) {
-              return converter.makeHtml(convertGFM(content));
-            }
-          })
+          "#main", [
+            buildAjaxModule({
+              url: "text/README.md",
+              build: function(content) {
+                return [
+                  "div", {
+                    html: true
+                  }, converter.makeHtml(convertGFM(content))
+                ];
+              },
+              postBuild: prettify
+            })
+          ]
         ], [
           "footer ul", [
             ["li", "Author: Raine Lourie"], [
@@ -52,9 +63,11 @@
       ]
     ];
   };
-  $(function() {
-    Creatable.render(build());
-    $("code").wrap(create(["pre.prettyprint"]));
+  prettify = function(el) {
+    $("code", el).wrap(create(["pre.prettyprint"]));
     return prettyPrint();
+  };
+  $(function() {
+    return Creatable.render(build());
   });
 }).call(this);
