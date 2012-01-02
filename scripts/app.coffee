@@ -27,7 +27,7 @@ build = () ->
 		["#main", buildAjaxModule({
 			url:	"../text/README.md",
 			build:  (content) -> converter.makeHtml(convertGFM(content))
-		}],
+		})],
 		["footer ul", [
 			["li", "Author: Raine Lourie"],
 			["li", [
