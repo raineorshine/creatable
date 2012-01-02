@@ -25,7 +25,7 @@ build = () ->
 			["h2.subtitle", "Pure Javascript client-side templating."]
 		]],
 		["#main", buildAjaxModule({
-			url:	"../text/README.md",
+			url:	"text/README.md",
 			build:  (content) -> converter.makeHtml(convertGFM(content))
 		})],
 		["footer ul", [
