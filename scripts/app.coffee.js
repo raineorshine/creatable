@@ -33,7 +33,7 @@
               }
             ]
           ]
-        ], ["heading", [["h1", "Creatable"], ["h2.subtitle", "Pure Javascript client-side templating."]]], [
+        ], ["header", [["h1", "Creatable"], ["h2.subtitle", "Pure Javascript client-side templating."]]], [
           "#main", [
             buildAjaxModule({
               url: "text/README.md",
