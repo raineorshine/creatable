@@ -145,7 +145,7 @@ Unit Tests
 Installation
 ===========
 
-Just include creatable.js in your HTML:
+Just include [creatable.js](https://github.com/RaineOrShine/creatable/blob/master/creatable.js) in your HTML:
 
 ```html
 <script src="creatable.js"></script>
