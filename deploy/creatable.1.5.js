@@ -304,10 +304,8 @@ this.Creatable = (function() {
 		/** Parses the attributes and adds them to the element. */
 		addAttributes: function(element, attrs) {
 			for(attr in attrs) {
-				if(attr == "checked" || attr == "disabled" || attr == "selected") {
-					if(attrs[attr]) {
-						element.setAttribute(attr, attr);
-					}
+				if((attr == "checked" || attr == "disabled" || attr == "selected") && attrs[attr]) {
+					element.setAttribute(attr, attr);
 				}
 				else if(Creatable.isValue(attrs[attr])) {
 					element.setAttribute(attr, attrs[attr]);

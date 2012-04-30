@@ -165,7 +165,6 @@ $(function() {
 		ok(isEl(el, "p") && el.firstChild && el.firstChild.nodeType === 3 && el.firstChild.nodeValue === "This is a paragraph with a link to <a href='http://google.com'>Google</a>", "String content is added as text by default, not HTML.");
 
 		el = create(["p", { html: true }, "This is a paragraph with a link to <a href='http://google.com'>Google</a>."]);
-		console.log(el);
 		ok(isEl(el, "p") && 
 			el.childNodes.length === 3 &&
 			el.childNodes[0].nodeType === 3 && 
@@ -180,6 +179,31 @@ $(function() {
 			
 			"Insert unescaped HTML as content"
 		);
+	});
+
+	test("checked, disabled, selected attributes", function() {
+
+		var checked = create(["input", { type: "radio", checked: true }]);
+		var disabled = create(["input", { type: "text", disabled: true }]);
+		var selected = create(["select", [
+			["option", { selected: true }]
+		]]);
+
+		equal(checked.getAttribute("checked"), "checked", "{ checked: true } is converted into { checked: \"checked\" }");
+		equal(disabled.getAttribute("disabled"), "disabled", "{ disabled: true } is converted into { disabled: \"disabled\" }");
+		equal(selected.firstChild.getAttribute("selected"), "selected", "{ selected: true } is converted into { selected: \"selected\" }");
+
+		var checkedFalse = create(["input", { type: "radio", checked: false }]);
+		var disabledFalse = create(["input", { type: "text", disabled: false }]);
+		var selectedFalse = create(["select", [
+			["option", { selected: false }]
+		]]);
+
+
+		strictEqual(checkedFalse.hasAttribute("checked"), false, "{ checked: false } is not rendered.");
+		strictEqual(disabledFalse.hasAttribute("disabled"), false, "{ disabled: false } is not rendered.");
+		strictEqual(selectedFalse.firstChild.hasAttribute("selected"), false, "{ selected: false } is not rendered.");
+
 	});
 });
 </script>
