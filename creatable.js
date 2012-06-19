@@ -548,4 +548,6 @@ var Creatable = (function() {
 })();
 
 // nodejs module
-exports = Creatable;
+if(typeof(module) != "undefined") {
+	module.exports = Creatable;
+}
