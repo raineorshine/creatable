@@ -549,3 +549,6 @@ var Creatable = (function() {
 
 // nodejs module
 exports = Creatable;
+
+// add create into the global namespace
+this.create = Creatable.create;
