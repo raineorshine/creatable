@@ -21,6 +21,12 @@ var Creatable = (function() {
 	var DocumentFragment = function() {
 		this.children = [];
 	};
+	DocumentFragment.prototype.appendChild = function(child) {
+		if(this.children.length === 0) {
+			this.firstChild = child;
+		}
+		this.children.push(child);
+	};
 	DocumentFragment.prototype.render = function() {
 		var output = "";
 		for(var i=0; i<this.children.length; i++) {
@@ -55,11 +61,25 @@ var Creatable = (function() {
 		this.children.push(child);
 	};
 	Element.prototype.render = function() {
-		var output = "<" + this.tagName + ">";
+		// opening tag
+		var output = "<" + this.tagName;
+
+		// attributes
+		for(var attr in this.attributes) {
+			output += " " + attr + "=\"" + this.attributes[attr] + "\"";
+		}
+
+		// end opening tag
+		output += ">";
+
+		// children
 		for(var i=0; i<this.children.length; i++) {
 			output += this.children[i].render();
 		}
+
+		// closing tag
 		output += "</" + this.tagName + ">";
+
 		return output;
 	}
 
