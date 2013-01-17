@@ -1,16 +1,12 @@
-/** Backbone extension to Creatable. 
-	@requires BackboneJS
-	@requires jquery.livequery.js
-	@requires functional
-*/
+/** Add support for Backbone Views to Creatable's rendering pipeline. */
 
-/** Extend Backbone.View with some base functionality. */
+/** Extend Backbone.View with a default render function that relies on build() to produce an s-exp representing the view. */
 Backbone.View = Backbone.View.extend({
-	// Override render to use build() to produce a markup array that Creatable can consume.
+
 	render: function() {
-		el = $(create(this.build()));
-		el.fadeIn();
+		el = $(Creatable.create(this.build()));
 		$(this.el).empty().append(el);
+		el.fadeIn();
 		this.trigger("rendered");
 		return this;
 	},
@@ -23,5 +19,5 @@ Backbone.View = Backbone.View.extend({
 /** Extend Creatable to support Backbone Views. */
 Creatable.types.push({
 	isOfType: function(obj) { return obj instanceof Backbone.View; },
-	build: function(obj) { return obj.render().el; }
+	build: 	  function(obj) { return obj.render().el; }
 });
