@@ -151,3 +151,7 @@ Just include creatable.js in your HTML:
 <script src="creatable.js"></script>
 ```
 
+Todo
+===========
+* Make it easy to sub out the rendering function to return a string of HTML instead of DOM nodes
+
