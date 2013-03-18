@@ -4,12 +4,17 @@
 Backbone.View = Backbone.View.extend({
 
 	render: function() {
-		el = $(Creatable.create(this.build()));
+		var that = this;
+		var el = $(Creatable.create(this.build()));
 		$(this.el)
 			.empty()
 			.append(el)
 			.fadeIn();
-		this.trigger("rendered");
+
+		setTimeout(function() {
+			that.trigger("render", el);
+		}, 0);
+
 		return this;
 	},
 
