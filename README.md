@@ -1,7 +1,7 @@
 Create DOM Elements with nestable arrays that reflect the structure of HTML:
 
 ```javascript
-document.body.appendChild(create(
+document.body.appendChild(Creatable.create(
 	["#content", [
 		["h1.prominent", "Blogs"],
 		["ul", [
@@ -26,11 +26,11 @@ Results in:
 </div>
 ```
 
-It all happens with one function: **create**
+It all happens with one function: **Creatable.create**
 
 ```javascript
-create([TAGNAME, ATTRIBUTES, CHILDREN|CONTENT]) // returns a native DOM element
-create(["a", { href: "http://google.com" }, "Google"]);
+Creatable.create([TAGNAME, ATTRIBUTES, CHILDREN|CONTENT]) // returns a native DOM element
+Creatable.create(["a", { href: "http://google.com" }, "Google"]);
 ```
 
 Why?
@@ -47,7 +47,7 @@ Specify ids and classes with css-syntax
 -----------
 
 ```javascript
-create(["div#footer", [
+Creatable.create(["div#footer", [
 	["p.fine-print", "Don't forget to read this!"]
 ]])
 ```
@@ -62,7 +62,7 @@ Document Fragments
 -----------
 
 ```javascript
-create(["fragment", [
+Creatable.create(["fragment", [
 	["p", "First paragraph!!!"],
 	["p", "Second paragraph!!!"],
 	["p", "Third paragraph I'm bored"]
@@ -80,7 +80,7 @@ Arguments that resolve to null or undefined are ignored
 
 ```javascript
 var showOptions = false;
-create(["div", [
+Creatable.create(["div", [
 	showOptions ? ["a", { href: "/options" }, "Options"] : null,
 	["p", "I think you've run out of options."]
 ]]);
@@ -108,7 +108,7 @@ var buildLinkItem = function(model) {
 	]];
 };
 
-create(["ul", _.map(links, buildLinkItem)])
+Creatable.create(["ul", _.map(links, buildLinkItem)])
 ```
 
 ```html
@@ -122,7 +122,7 @@ create(["ul", _.map(links, buildLinkItem)])
 Built-in support for jQuery elements
 -----------
 ```javascript
-create(["#myModule", [
+Creatable.create(["#myModule", [
 	["h1", "This is a header"],
 	"Some text.",
 	$("<div><p>Go, Go jQuery</p></div>")
@@ -137,10 +137,18 @@ create(["#myModule", [
 </div>
 ```
 
+Use it to return a string of HTML instead of a DOM node
+===========
+```javascript
+var html = Creatable.createHtml(['a#go.small.button', 'test']);
+console.log(html); //<a id="go" class="small button">test</a>
+```
+
+
 Unit Tests
 ===========
 
-**creatable** has full [unit test coverage](https://github.com/RaineOrShine/creatable/tree/master/test) using qunit.
+**creatable** has full [unit test coverage](https://github.com/RaineOrShine/creatable/tree/master/test) using mocha.
 
 Installation
 ===========
@@ -151,7 +159,4 @@ Just include creatable.js in your HTML:
 <script src="creatable.js"></script>
 ```
 
-Todo
-===========
-* Make it easy to sub out the rendering function to return a string of HTML instead of DOM nodes
 
