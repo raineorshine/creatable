@@ -34,13 +34,13 @@ Creatable.create(["a", { href: "http://google.com" }, "Google"]);
 ```
 
 Why?
-===========
+-----------
 * Switching in and out of Javascript and whatever templating language you use is ugly.
 * No special templating language syntax. 100% pure Javascript.
 * Implement view composition using plain, old functions.
 * Properly formatted input still reflects the actual structure of HTML for readability.
 
-Features
+Documentation
 ===========
 
 Specify ids and classes with css-syntax
@@ -75,21 +75,25 @@ Creatable.create([[
 <p>Third paragraph I'm bored</p>
 ```
 
-Arguments that resolve to null or undefined are ignored
+HTML is automatically escaped
 -----------
 
 ```javascript
-var showOptions = false;
-Creatable.create(["div", [
-	showOptions ? ["a", { href: "/options" }, "Options"] : null,
-	["p", "I think you've run out of options."]
-]]);
+Creatable.create(['p', 'Something <strong>important</strong> to say.'])
 ```
 
 ```html
-<div>
-	<p>I think you've run out of options.</p>
-</div>
+<p>Something &lt;strong&pt;important&lt;/strong&gt; to say.</p>
+```
+
+You can unescape HTML by adding { html: true }
+
+```javascript
+Creatable.create(['p', { html: true }, 'Something <strong>important</strong> to say.'])
+```
+
+```html
+<p>Something <strong>important</strong> to say.</p>
 ```
 
 Highly compatible with underscore and functional programming
@@ -138,7 +142,7 @@ Creatable.create(["#myModule", [
 ```
 
 Use it to return a string of HTML instead of a DOM node
-===========
+-----------
 ```javascript
 var html = Creatable.createHtml(['a#go.small.button', 'test']);
 console.log(html); //<a id="go" class="small button">test</a>
