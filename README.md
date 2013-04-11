@@ -62,7 +62,7 @@ Document Fragments
 -----------
 
 ```javascript
-Creatable.create(["fragment", [
+Creatable.create([[
 	["p", "First paragraph!!!"],
 	["p", "Second paragraph!!!"],
 	["p", "Third paragraph I'm bored"]
