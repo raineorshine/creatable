@@ -83,7 +83,7 @@ Creatable.create(['p', 'Something <strong>important</strong> to say.'])
 ```
 
 ```html
-<p>Something &lt;strong&pt;important&lt;/strong&gt; to say.</p>
+<p>Something &lt;strong&gt;important&lt;/strong&gt; to say.</p>
 ```
 
 You can unescape HTML by adding { html: true }
