@@ -23,26 +23,29 @@ class TextNode
 class DocumentFragment
   constructor: -> 
     @nodeType = 11
-    @children = []
+    @childNodes = []
 
   appendChild: (child) ->
-    @firstChild = child if @children.length is 0
-    @children.push child
+    @firstChild = child if @childNodes.length is 0
+    @childNodes.push child
 
   toString: ->
     output = ""
     i = 0
 
-    while i < @children.length
-      output += @children[i].toString()
+    while i < @childNodes.length
+      output += @childNodes[i].toString()
       i++
     output
 
 # Emulated Element
 class Element
+
+  voidElements: area: 1, base: 1, br: 1, col: 1, command: 1, embed: 1, hr: 1, img: 1, input: 1, keygen: 1, link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1
+
   constructor: (@tagName) ->
     @attributes = {}
-    @children = []
+    @childNodes = []
     @nodeType = 1
 
   hasAttribute: (attrName) ->
@@ -59,8 +62,8 @@ class Element
     console.error "Not implemented."
 
   appendChild: (child) ->
-    @firstChild = child  if @children.length is 0
-    @children.push child
+    @firstChild = child  if @childNodes.length is 0
+    @childNodes.push child
 
   toString: ->
     
@@ -74,15 +77,17 @@ class Element
     # end opening tag
     output += ">"
     
-    # children
+    # childNodes
     i = 0
 
-    while i < @children.length
-      output += @children[i].toString()
+    while i < @childNodes.length
+      output += @childNodes[i].toString()
       i++
     
     # closing tag
-    output += "</" + @tagName + ">"
+    if @tagName not of @voidElements
+      output += "</" + @tagName + ">"
+
     output
 
 ### 

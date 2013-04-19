@@ -1,0 +1,161 @@
+/******************************
+ * Color Definitions
+ ******************************/
+/******************************
+ * Functions
+ ******************************/
+.cfbefore,
+.cfafter {
+  content: " ";
+  display: table;
+}
+.cfafter {
+  clear: both;
+}
+.cf {
+  *zoom: 1;
+}
+/******************************
+ * Defaults
+ ******************************/
+body {
+  padding: 50px;
+  font: 20px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #777;
+  font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222;
+  margin: 0 0 20px;
+}
+p,
+ul,
+ol,
+table,
+pre,
+dl {
+  margin: 0 0 20px;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-weight: normal;
+  color: #393939;
+}
+h3,
+h4,
+h5,
+h6 {
+  color: #494949;
+}
+a {
+  color: #39c;
+  font-weight: 400;
+  text-decoration: none;
+}
+code,
+pre {
+  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+  font-size: 14px;
+}
+pre,
+html pre.prettyprint /* specificity hack */ {
+  border: none;
+  padding: 8px 15px;
+  background: #f8f8f8;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  overflow-x: auto;
+}
+header,
+section,
+footer {
+  float: none;
+  width: auto;
+  position: static;
+}
+li {
+  line-height: 1.5;
+  margin-left: 6%;
+}
+/******************************
+ * Components
+ ******************************/
+.wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.page-header {
+  margin: 0 0 40px 0;
+  text-align: center;
+  border: none;
+}
+.page-title {
+  font-weight: normal;
+  font-size: 64px;
+}
+.button {
+  background: linear-gradient(top, #f8f8f8 0%, #ddd 100%);
+  background: -moz-linear-gradient(top, #f8f8f8 0%, #ddd 100%);
+  background: -webkit-linear-gradient(top, #f8f8f8 0%, #ddd 100%);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #d2d2d2;
+  -moz-box-shadow: inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+  -webkit-box-shadow: inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+  box-shadow: inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+  line-height: 1;
+  font-size: 14px;
+  color: #999;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 30px;
+}
+.button strong {
+  display: block;
+}
+.de-em {
+  font-size: 75%;
+}
+.massive {
+  font-size: 72px;
+}
+.massive-symbol {
+  font-size: 40px;
+  line-height: 7px;
+  height: 29px;
+  font-family: monospace;
+}
+.instruct {
+  font-size: 24px;
+  margin: 50px 0;
+}
+.instruct-code {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+.center-divide {
+  text-align: center;
+}
+.massive-demo {
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+.content-section h1,
+.content-section h2 {
+  margin-top: 50px;
+}

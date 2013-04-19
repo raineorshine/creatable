@@ -19,7 +19,18 @@ module.exports = (grunt) ->
       'dev-out':
         options: stdout: true
         command: 'cp public/scripts/out.js public/scripts/out.min.js'
-
+      'deploy-static-components':
+        options: stdout: true
+        command: 'mkdir -p static/components && cp -a public/components static'
+      'deploy-static-js':
+        options: stdout: true
+        command: 'mkdir -p static/scripts && cp public/scripts/out.min.js static/scripts'
+      'deploy-static-css':
+        options: stdout: true
+        command: 'mkdir -p static/styles && cp public/styles/main.css static/styles'
+      'deploy-static-root':
+        options: stdout: true
+        command: 'cp -a static/* ./'
 
     concat:
       options:
@@ -51,4 +62,5 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', ['compile', 'concat', 'uglify']
   grunt.registerTask 'dev', ['compile', 'concat', 'shell:dev-out']
   grunt.registerTask 'compile', ['shell:compile-server-side', 'shell:compile-client-side', 'shell:compile-css']
-  grunt.registerTask 'static', ['shell:static']
+  grunt.registerTask 'static', ['clean:static', 'shell:static', 'shell:deploy-static-js', 'shell:deploy-static-css', 'shell:deploy-static-components']
+  grunt.registerTask 'deploy-static-root', ['shell:deploy-static-root']

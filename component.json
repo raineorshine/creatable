@@ -6,7 +6,7 @@
     "bootstrap":          "http://twitter.github.com/bootstrap/assets/bootstrap.zip",
     "underscore":         "~1.4.4",
     "rjs":                "https://raw.github.com/RaineOrShine/rjs/master/deploy/rjs.2.10.0.js",
-    "creatable":          "https://raw.github.com/RaineOrShine/creatable/master/deploy/creatable-3.0.2.js",
+    "creatable":          "https://raw.github.com/RaineOrShine/creatable/master/deploy/creatable-3.0.3.js",
     "creatable-backbone": "https://raw.github.com/RaineOrShine/creatable/master/deploy/creatable.backbone-2.0.0.js"
   }
 }

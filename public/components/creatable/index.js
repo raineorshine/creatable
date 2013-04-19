@@ -7,14 +7,19 @@ Elegant HTML generation. No templating. Just Javascript.
 */
 
 
-/*
-DOM Emulation
-*/
-
-
 (function() {
-  var DocumentFragment, Element, TextNode, addAttributes, addChildren, containsClass, create, createFromMarkupArray, createHtml, curry, document, each, eachObj, emulatedDocument, error, extend, filter, find, index, isDomNode, keyValue, map, mergeAttributes, orderedGroup, parseSelectorAttributes, parseTagName, plugins, regexIdOrClass, regexIdOrClassSeparator, render, setDocument, setEmulatedDocument, splice, splitOnce, toObject, typeOf, types,
+  var DocumentFragment, Element, Encoder, TextNode, addAttributes, addChildren, containsClass, create, createFromMarkupArray, createHtml, curry, document, each, eachObj, emulatedDocument, encoder, error, extend, filter, find, index, isDomNode, keyValue, map, mergeAttributes, orderedGroup, parseSelectorAttributes, parseTagName, plugins, regexIdOrClass, regexIdOrClassSeparator, render, setDocument, setEmulatedDocument, splice, splitOnce, toObject, typeOf, types,
     __slice = [].slice;
+
+  if (typeof require !== "undefined" && require !== null) {
+    Encoder = require('node-html-encoder').Encoder;
+    encoder = new Encoder('entity');
+  }
+
+  /*
+  DOM Emulation
+  */
+
 
   TextNode = (function() {
 
@@ -24,7 +29,7 @@ DOM Emulation
     }
 
     TextNode.prototype.toString = function() {
-      return this.textContent;
+      return (typeof require !== "undefined" && require !== null) && encoder.htmlEncode(this.textContent) || this.textContent;
     };
 
     return TextNode;
@@ -35,22 +40,22 @@ DOM Emulation
 
     function DocumentFragment() {
       this.nodeType = 11;
-      this.children = [];
+      this.childNodes = [];
     }
 
     DocumentFragment.prototype.appendChild = function(child) {
-      if (this.children.length === 0) {
+      if (this.childNodes.length === 0) {
         this.firstChild = child;
       }
-      return this.children.push(child);
+      return this.childNodes.push(child);
     };
 
     DocumentFragment.prototype.toString = function() {
       var i, output;
       output = "";
       i = 0;
-      while (i < this.children.length) {
-        output += this.children[i].toString();
+      while (i < this.childNodes.length) {
+        output += this.childNodes[i].toString();
         i++;
       }
       return output;
@@ -62,10 +67,29 @@ DOM Emulation
 
   Element = (function() {
 
+    Element.prototype.voidElements = {
+      area: 1,
+      base: 1,
+      br: 1,
+      col: 1,
+      command: 1,
+      embed: 1,
+      hr: 1,
+      img: 1,
+      input: 1,
+      keygen: 1,
+      link: 1,
+      meta: 1,
+      param: 1,
+      source: 1,
+      track: 1,
+      wbr: 1
+    };
+
     function Element(tagName) {
       this.tagName = tagName;
       this.attributes = {};
-      this.children = [];
+      this.childNodes = [];
       this.nodeType = 1;
     }
 
@@ -87,10 +111,10 @@ DOM Emulation
     };
 
     Element.prototype.appendChild = function(child) {
-      if (this.children.length === 0) {
+      if (this.childNodes.length === 0) {
         this.firstChild = child;
       }
-      return this.children.push(child);
+      return this.childNodes.push(child);
     };
 
     Element.prototype.toString = function() {
@@ -101,11 +125,13 @@ DOM Emulation
       }
       output += ">";
       i = 0;
-      while (i < this.children.length) {
-        output += this.children[i].toString();
+      while (i < this.childNodes.length) {
+        output += this.childNodes[i].toString();
         i++;
       }
-      output += "</" + this.tagName + ">";
+      if (!(this.tagName in this.voidElements)) {
+        output += "</" + this.tagName + ">";
+      }
       return output;
     };
 

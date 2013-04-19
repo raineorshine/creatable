@@ -13,7 +13,7 @@
     "rjs": "~2.10.0",
     "jade": "~0.29.0",
     "async": "~0.2.7",
-    "creatable": "~3.0.2"
+    "creatable": "~3.0.3"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

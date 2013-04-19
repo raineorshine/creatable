@@ -29,10 +29,11 @@ app.get '/', (req, res) ->
   c = ['html', [
     ['head', [
       ['title', 'Creatable']
+      ['meta', { charset: 'UTF-8'}]
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
-      ['link', { rel: 'stylesheet', href: '/components/bootstrap/css/bootstrap.min.css' }]
+      ['link', { rel: 'stylesheet', href: 'components/bootstrap/css/bootstrap.min.css' }]
       ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700' }]
-      ['link', { rel: 'stylesheet', href: '/styles/main.css' }]
+      ['link', { rel: 'stylesheet', href: 'styles/main.css' }]
     ]]
 
     ['body', [
