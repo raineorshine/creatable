@@ -195,7 +195,7 @@
         return el.firstChild.textContent.should.equal('A');
       });
     });
-    describe('checked, disabled, selected attributes', function() {
+    return describe('checked, disabled, selected attributes', function() {
       it('should convert true to the attribute name', function() {
         var checked, disabled, selected;
         checked = Creatable.create([
@@ -251,11 +251,80 @@
         return selected.firstChild.hasAttribute('selected').should.be["false"];
       });
     });
-    describe('TextNode', function() {});
-    describe('DocumentFragment', function() {});
-    describe('Element', function() {});
+  });
+
+  describe('Emulated document object', function() {
+    describe('TextNode', function() {
+      var textNode;
+      textNode = new Creatable.TextNode('content');
+      it('should have a nodeType of 3', function() {
+        return textNode.should.have.property('nodeType', 3);
+      });
+      it('should have a textContent property equal to its text', function() {
+        return textNode.should.have.property('textContent', 'content');
+      });
+      return it('should override toString() to render the text content', function() {
+        return textNode.toString().should.equal('content');
+      });
+    });
+    describe('Element', function() {
+      var elementNode, voidElements;
+      voidElements = {
+        area: 1,
+        base: 1,
+        br: 1,
+        col: 1,
+        command: 1,
+        embed: 1,
+        hr: 1,
+        img: 1,
+        input: 1,
+        keygen: 1,
+        link: 1,
+        meta: 1,
+        param: 1,
+        source: 1,
+        track: 1,
+        wbr: 1
+      };
+      elementNode = new Creatable.Element('p');
+      elementNode.appendChild(new Creatable.TextNode('content'));
+      it('should have a tagName', function() {
+        return elementNode.should.have.property('tagName', 'p');
+      });
+      it('should have a childNodes property', function() {
+        elementNode.should.have.property('childNodes');
+        return elementNode.childNodes.should.be.an.array;
+      });
+      it('should have a nodeType of 1', function() {
+        return elementNode.should.have.property('nodeType', 1);
+      });
+      it('should override toString() render HTML', function() {
+        return elementNode.toString().should.equal('<p>content</p>');
+      });
+      return it('should not render closing tags on void elements', function() {
+        var el, tagName, _results;
+        _results = [];
+        for (tagName in voidElements) {
+          el = new Creatable.Element(tagName);
+          _results.push(el.toString().should.equal("<" + tagName + ">"));
+        }
+        return _results;
+      });
+    });
+    describe('DocumentFragment', function() {
+      var fragmentNode;
+      fragmentNode = new Creatable.DocumentFragment();
+      it('should have a childNodes property', function() {
+        fragmentNode.should.have.property('childNodes');
+        return fragmentNode.childNodes.should.be.an.array;
+      });
+      return it('should have a nodeType of 11', function() {
+        return fragmentNode.should.have.property('nodeType', 11);
+      });
+    });
     return describe('createHtml', function() {
-      return it('should render creatable markup to a string', function() {
+      return it('should use the emulated document to render creatable markup to a string', function() {
         return Creatable.createHtml(['a#go.small.button', 'test']).should.equal('<a id="go" class="small button">test</a>');
       });
     });

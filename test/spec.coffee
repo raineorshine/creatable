@@ -173,12 +173,46 @@ describe 'Other Features', ->
       disabled.hasAttribute('disabled').should.be.false
       selected.firstChild.hasAttribute('selected').should.be.false
 
+
+describe 'Emulated document object', ->
+
   describe 'TextNode', ->
-  describe 'DocumentFragment', ->
+    textNode = new Creatable.TextNode('content')
+    it 'should have a nodeType of 3', ->
+      textNode.should.have.property 'nodeType', 3
+    it 'should have a textContent property equal to its text', ->
+      textNode.should.have.property 'textContent', 'content'
+    it 'should override toString() to render the text content', ->
+      textNode.toString().should.equal 'content'
+
   describe 'Element', ->
+    voidElements = area: 1, base: 1, br: 1, col: 1, command: 1, embed: 1, hr: 1, img: 1, input: 1, keygen: 1, link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1
+    elementNode = new Creatable.Element('p')
+    elementNode.appendChild(new Creatable.TextNode('content'))
+    it 'should have a tagName', ->
+      elementNode.should.have.property 'tagName', 'p'
+    it 'should have a childNodes property', ->
+      elementNode.should.have.property 'childNodes'
+      elementNode.childNodes.should.be.an.array
+    it 'should have a nodeType of 1', ->
+      elementNode.should.have.property 'nodeType', 1
+    it 'should override toString() render HTML', ->
+      elementNode.toString().should.equal '<p>content</p>'
+    it 'should not render closing tags on void elements', ->
+      for tagName of voidElements
+        el = new Creatable.Element tagName
+        el.toString().should.equal "<#{tagName}>"
+
+  describe 'DocumentFragment', ->
+    fragmentNode = new Creatable.DocumentFragment()
+    it 'should have a childNodes property', ->
+      fragmentNode.should.have.property 'childNodes'
+      fragmentNode.childNodes.should.be.an.array
+    it 'should have a nodeType of 11', ->
+      fragmentNode.should.have.property 'nodeType', 11
 
   describe 'createHtml', ->
-    it 'should render creatable markup to a string', ->
+    it 'should use the emulated document to render creatable markup to a string', ->
       Creatable.createHtml(['a#go.small.button', 'test']).should.equal('<a id="go" class="small button">test</a>')
 
 
