@@ -14,6 +14,7 @@
     "url": "git://github.com/RaineOrShine/creatable.git"
   },
   "author": "Raine Lourie",
+  "keywords": ["dom", "html", "templates", "templating"],
   "license": "BSD",
   "gitHead": "3ad55908257889cb62628f7a9b49939e852977b9",
   "readmeFilename": "README.md",
