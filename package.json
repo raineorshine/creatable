@@ -1,0 +1,33 @@
+{
+  "name": "nodestrap",
+  "description": "Scaffolding for a Heroku-ready web stack: node + bower + bootstrap + backbone + creatable",
+  "version": "2.0.0",
+  "engines": {
+    "node": "0.8.4",
+    "npm": "1.2.18"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "~3.2.0",
+    "mongodb": "~1.2.14",
+    "underscore": "~1.4.4",
+    "rjs": "~2.10.0",
+    "jade": "~0.29.0",
+    "async": "~0.2.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-shell": "~0.2.2"
+  },
+  "readmeFilename": "README.md",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Raine Lourie",
+  "license": "BSD"
+}
