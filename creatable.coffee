@@ -4,6 +4,10 @@ Elegant HTML generation. No templating. Just Javascript.
 @note Created independently from JsonML (http://jsonml.org).
 ###
 
+if require?
+  Encoder = require('node-html-encoder').Encoder
+  encoder = new Encoder('entity')
+
 ###
 DOM Emulation
 ###
@@ -12,7 +16,8 @@ DOM Emulation
 class TextNode
   constructor: (@textContent)->
     @nodeType = 3
-  toString: -> @textContent
+  toString: -> 
+    require? and encoder.htmlEncode(@textContent) or @textContent
 
 # Emulated Document Fragment
 class DocumentFragment
