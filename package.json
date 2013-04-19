@@ -1,6 +1,6 @@
 {
   "name": "creatable",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Elegant HTML generation. No templating. Just Javascript.",
   "main": "creatable.js",
   "directories": {
