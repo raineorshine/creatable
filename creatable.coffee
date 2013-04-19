@@ -1,21 +1,23 @@
 ###
-Write HTML without leaving Javascript land. Create DOM Elements with nestable arrays that reflect the structure of HTML.
+Elegant HTML generation. No templating. Just Javascript.
 @author Raine Lourie
 @note Created independently from JsonML (http://jsonml.org).
 ###
-  
+
 ###
 DOM Emulation
 ###
 
 # Emulated TextNode
 class TextNode
-  constructor: (@value)->
-  toString: -> @value
+  constructor: (@textContent)->
+    @nodeType = 3
+  toString: -> @textContent
 
 # Emulated Document Fragment
 class DocumentFragment
   constructor: -> 
+    @nodeType = 11
     @children = []
 
   appendChild: (child) ->
@@ -36,6 +38,7 @@ class Element
   constructor: (@tagName) ->
     @attributes = {}
     @children = []
+    @nodeType = 1
 
   hasAttribute: (attrName) ->
     attrName of @attributes
@@ -94,6 +97,14 @@ emulatedDocument =
   toString: ->
     @body.toString()
 
+document = @document || emulatedDocument
+
+setDocument = (doc)->
+  document = doc
+
+setEmulatedDocument = (doc)->
+  document = emulatedDocument
+  
 
 ###
 Regexes
@@ -449,13 +460,14 @@ error = (message, params) ->
 Render Helper
 ###
 render = (markup) ->
-  body = doc.body
+  body = document.body
   body.removeChild body.firstChild  while body.firstChild
   body.appendChild create(markup)
 
 # export public interface
-Creatable = exports? and exports or @Creatable = 
+extend (exports? and exports or @Creatable = {}), 
   emulatedDocument:       emulatedDocument
+  setDocument:            setDocument
   TextNode:               TextNode
   Element:                Element
   DocumentFragment:       DocumentFragment

@@ -1,0 +1,24 @@
+{
+  "name": "creatable",
+  "version": "3.0.0",
+  "description": "Elegant HTML generation. No templating. Just Javascript.",
+  "main": "creatable.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RaineOrShine/creatable.git"
+  },
+  "author": "Raine Lourie",
+  "license": "BSD",
+  "gitHead": "3ad55908257889cb62628f7a9b49939e852977b9",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "chai": "~1.5.0"
+  }
+}

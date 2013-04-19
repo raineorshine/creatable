@@ -1,6 +1,6 @@
 {
   "name": "creatable",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "creatable.js",
   "devDependencies": {
     "mocha": "~1.9.0",

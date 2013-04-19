@@ -1,3 +1,5 @@
+Creatable = @Creatable ? require('../creatable.js')
+chai = @chai ? require('chai')
 should = chai.should()
 
 describe "Basic", ->
