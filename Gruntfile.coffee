@@ -13,6 +13,13 @@ module.exports = (grunt) ->
       'compile-css':
         options: stdout: true
         command: 'stylus public/styles/'
+      'static':
+        options: stdout: true
+        command: 'mkdir -p static && curl http://localhost:5001 >> static/index.html'
+      'dev-out':
+        options: stdout: true
+        command: 'cp public/scripts/out.js public/scripts/out.min.js'
+
 
     concat:
       options:
@@ -31,6 +38,7 @@ module.exports = (grunt) ->
       css: 'public/styles/main.css'
       components: 'public/components'
       npm: 'node_modules'
+      static: 'static'
 
   
   # Load the plugin that provides the 'uglify' task.
@@ -41,4 +49,6 @@ module.exports = (grunt) ->
 
   # Default task(s).
   grunt.registerTask 'default', ['compile', 'concat', 'uglify']
+  grunt.registerTask 'dev', ['compile', 'concat', 'shell:dev-out']
   grunt.registerTask 'compile', ['shell:compile-server-side', 'shell:compile-client-side', 'shell:compile-css']
+  grunt.registerTask 'static', ['shell:static']

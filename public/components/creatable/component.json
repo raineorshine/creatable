@@ -1,0 +1,9 @@
+{
+  "name": "creatable",
+  "main": "index.js",
+  "version": "0.0.0",
+  "repository": {
+    "type": "asset",
+    "url": "https://raw.github.com/RaineOrShine/creatable/master/deploy/creatable-3.0.1.js"
+  }
+}
