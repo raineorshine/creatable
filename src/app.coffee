@@ -46,23 +46,28 @@ app.get '/', (req, res) ->
         ]]
 
         ['section.content-section', [
-          ['pre.prettyprint code.massive-demo', "['#content p a.small.button', { href: '/checkout' }, 'Checkout']"]
-          ['.center-divide .massive-symbol', { html: true }, '&rarr;']
-          ['pre.prettyprint code.language-javascript.massive-demo', '''<div id="content">
-            <p>
-              <a class="small button" href="/checkout">Checkout</a>
-            </p>
-          </div>''']
+          ['.above-the-fold', [
+            ['p.instruct', '''Creatable let's you build HTML in Javascript without templates.''']
 
-          ['p.instruct', "Creatable let's you build HTML in Javascript without templates."]
+            ['pre.prettyprint code.massive-demo', "['#content p a.small.button', { href: '/checkout' }, 'Checkout']"]
+
+            ['.center-divide .massive-symbol', { html: true }, '&rarr;']
+
+            ['pre.prettyprint code.language-javascript.massive-demo', '''<div id="content">
+              <p>
+                <a class="small button" href="/checkout">Checkout</a>
+              </p>
+            </div>''']
+          ]]
 
           ['h2', 'Why?']
 
           ['ul', [
-            ['li', 'Switching between Javascript and a templating language is messy.']
-            ['li', '''Including logic is clean since it's all Javascript.''']
-            ['li', 'Implement partial views using plain old functions.']
-            ['li', 'Reflects the natural structure of HTML for readability.']
+            ['li', 'Switching back-and-forth between Javascript and a templating language is a pain.']
+            ['li', '''Client-side templating is too heavy for simple markup.''']
+            ['li', '''You can decompose and reuse markup with plain ol' functions.''']
+            ['li', 'The nested array structure reflects the natural structure of HTML for readability.']
+            ['li', ['Performing logic is easy and clean since it\'s Javascript ', ['em', 'all the way down'], '.']]
           ]]
 
           ['h1', 'Getting Started']
