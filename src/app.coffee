@@ -54,14 +54,44 @@ app.get '/', (req, res) ->
             </p>
           </div>''']
 
-          ['p.instruct', "Creatable let's you build HTML in Javascript without templates. You specify your markup in an array like this:"]
-          ['pre.prettyprint code.instruct-code', '''Creatable.create([TAGNAME, ATTRIBUTES, CHILDREN|CONTENT])
-Creatable.create(["a", { href: "http://google.com" }, "Google"]);''']
+          ['p.instruct', "Creatable let's you build HTML in Javascript without templates."]
 
-          ['p.instruct', [
-            ['code.massive-demo', 'Creatable.create']
-            " returns a native DOM node. Then you can append it to your document. Here's a larger example:"
+          ['h2', 'Why?']
+
+          ['ul', [
+            ['li', 'Switching between Javascript and a templating language is messy.']
+            ['li', '''Including logic is clean since it's all Javascript.''']
+            ['li', 'Implement partial views using plain old functions.']
+            ['li', 'Reflects the natural structure of HTML for readability.']
           ]]
+
+          ['h1', 'Getting Started']
+
+          ['p.instruct', 'Pass a simple array that represents an element to Creatable.create():']
+
+          ['pre.prettyprint code', '''Creatable.create(["a", { href: "http://google.com" }, "Google"])''']
+          #['pre.prettyprint code.instruct-code', '''Creatable.create([TAGNAME, ATTRIBUTES, CHILDREN|CONTENT])
+#Creatable.create(["a", { href: "http://google.com" }, "Google"]);''']
+
+          ['p.instruct', 'Creatable.create() returns a native DOM node. Append it to your document:']
+
+          ['pre.prettyprint code', '''var node = Creatable.create(["a", { href: "http://google.com" }, "Google"]);
+          document.body.appendChild(node);''']
+
+          ["p.instruct", '''Attributes are optional. Pass an object of attributes as the second item in the array.''']
+
+          ['pre.prettyprint code', '''Creatable.create(['input', { type: 'input', name: 'city', value: 'Boulder' }])''']
+
+          ["p.instruct", '''You can easily nest child elements:''']
+
+          ['pre.prettyprint code', '''Creatable.create(['ul', [
+            ['li', 'Item 1'],
+            ['li', 'Item 2'],
+            ['li', 'Item 3']
+          ]])''']
+
+          ["p.instruct", '''The unique use of nested arrays results in a very intuitive structure that reflects the appearance of HTML:''']
+
           ['pre.prettyprint code', '''var c = ["#content", [
             ["h1.prominent", "Blogs"],
             ["ul", [
@@ -82,15 +112,6 @@ Creatable.create(["a", { href: "http://google.com" }, "Google"]);''']
               <li><a href="http://ejohn.org/category/blog">John Resig</a></li>
             </ul>
           </div>''']
-
-          ['h2', 'Why?']
-
-          ['ul', [
-            ['li', 'Switching between Javascript and a templating language is messy.']
-            ['li', 'No special templating language syntax. 100% pure Javascript.']
-            ['li', 'Implement partial views using plain old functions.']
-            ['li', 'Reflects the natural structure of HTML for readability']
-          ]]
 
           ['h1', 'Documentation']
 
