@@ -1,77 +1,14 @@
-Scaffolding for a Heroku-ready, coffee-fueled web stack: **node + bower + bootstrap + backbone + creatable**
+# The Essentials
 
-# server-side (npm)
+    1. npm install
+    2. bower install
+    3. grunt
+    4. foreman start (http://localhost:5001)
+    5. grunt static
+    6. grunt deploy
 
-* express
-* mongodb
-* underscore
-* rjs
-* jade
-* async
-
-# client-side (bower)
-
-* bootstrap
-* underscore
-* backbone
-* jQuery
-* rjs
-* creatable
-
-# directory structure
-
-    root
-      |- public
-        |- components
-        |- images
-        |- styles
-        |- scripts
-           |- compiled
-           |- src
-      |- src
-        |- models
-      |- view
-
-# global dependencies
-
-* node
-* npm
-* grunt-cli
-* bower
-* coffee
-* stylus
-* mongod
-* foreman
-
-# setup
-
-    npm install
-    bower install
-
-# background jobs
+# Background Jobs
 
     stylus public/styles/ -w &
     coffee -o ./ -cw src/ &
     coffee -o public/scripts/compiled -cw public/scripts/src/ &
-    mongod &
-
-# build
-
-    grunt compile
-    grunt concat
-    grunt uglify
-    grunt
-
-    grunt clean
-
-# start app
-at port specified in .env file (default: 5001)
-
-    foreman start
-
-
-----------
-
-**TODO**
-
-* incorporate background jobs into grunt build task
