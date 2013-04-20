@@ -147,10 +147,13 @@ li {
 h1 + .instruct {
   margin-top: 40px;
 }
-.above-the-fold .instruct {
-  margin: 35px 0 50px 0;
+header .instruct {
+  margin: 50px 0;
   font-size: 30px;
   text-align: center;
+}
+.standalone {
+  margin-top: 50px;
 }
 .instruct-code {
   font-size: 20px;

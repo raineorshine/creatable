@@ -63,4 +63,4 @@ module.exports = (grunt) ->
   grunt.registerTask 'dev', ['compile', 'concat', 'shell:dev-out']
   grunt.registerTask 'compile', ['shell:compile-server-side', 'shell:compile-client-side', 'shell:compile-css']
   grunt.registerTask 'static', ['clean:static', 'shell:static', 'shell:deploy-static-js', 'shell:deploy-static-css', 'shell:deploy-static-components']
-  grunt.registerTask 'deploy-static-root', ['shell:deploy-static-root']
+  grunt.registerTask 'deploy', ['shell:deploy-static-root']

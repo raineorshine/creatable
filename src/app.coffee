@@ -21,7 +21,7 @@ download = ->
       "Download"
       ['strong', 'creatable.js']
     ]]
-    ['p.de-em a', { href: 'https://github.com/RaineOrShine/creatable' }, 'View the Project on GitHub']
+    #['p.de-em a', { href: 'https://github.com/RaineOrShine/creatable' }, 'View the Project on GitHub']
   ]]
 
 # controller
@@ -41,24 +41,29 @@ app.get '/', (req, res) ->
 
         ['header.page-header', [
           ['h1.page-title', 'Creatable']
-          ['p', 'Elegant HTML generation. No templates. Just Javascript.']
-          download()
+          ['p.instruct', '''Creatable let's you build HTML in Javascript without templates.''']
+          #['p', 'Elegant HTML generation. No templates. Just Javascript.']
         ]]
 
         ['section.content-section', [
-          ['.above-the-fold', [
-            ['p.instruct', '''Creatable let's you build HTML in Javascript without templates.''']
 
-            ['pre.prettyprint code.massive-demo', "['#content p a.small.button', { href: '/checkout' }, 'Checkout']"]
-
-            ['.center-divide .massive-symbol', { html: true }, '&rarr;']
-
-            ['pre.prettyprint code.language-javascript.massive-demo', '''<div id="content">
-              <p>
-                <a class="small button" href="/checkout">Checkout</a>
-              </p>
-            </div>''']
+          ['a', { href: 'https://github.com/RaineOrShine/creatable' }, [
+            ['img', 
+              style: 'position: absolute; top: 0; right: 0; border: 0;' 
+              src: 'https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png' 
+              alt: 'Fork me on GitHub'
+            ]
           ]]
+
+          ['pre.prettyprint code.massive-demo', "['#content p a.small.button', { href: '/checkout' }, 'Checkout']"]
+
+          ['.center-divide .massive-symbol', { html: true }, '&rarr;']
+
+          ['pre.prettyprint code.language-javascript.massive-demo', '''<div id="content">
+            <p>
+              <a class="small button" href="/checkout">Checkout</a>
+            </p>
+          </div>''']
 
           ['h2', 'Why?']
 
@@ -68,6 +73,10 @@ app.get '/', (req, res) ->
             ['li', '''You can decompose and reuse markup with plain ol' functions.''']
             ['li', 'The nested array structure reflects the natural structure of HTML for readability.']
             ['li', ['Performing logic is easy and clean since it\'s Javascript ', ['em', 'all the way down'], '.']]
+          ]]
+
+          ['section.standalone.center-divide', [
+            download()
           ]]
 
           ['h1', 'Getting Started']
