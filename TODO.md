@@ -52,3 +52,48 @@
       ]];
     }
   });
+
+
+
+
+
+
+   var MyView = Backbone.View.extend({
+      init: function() {
+      },
+      
+      build: function() {
+          return ['#mymodule', [
+            ['input', { value: this.model.get('name'); }]
+          ]];
+      }
+  });
+
+  Creatable.plugins.bind = function(el, o/*comes from bind attribute value*/) {
+      // dom -> model
+      el.addEventHandler('change', function() {
+         o.model.save(RJS.keyValue(o.name, el.value));
+      };
+      
+      // model -> dom
+      o.model.bind('change', function() {
+        el.value = o.model.get(o.name);
+      });
+  };
+
+  // the value of the 'bind' attribute gets passed as the second argument to the plugin (above)
+  Creatable.create(['input', { bind: { model: this.model, field: 'name' } }]);
+
+  /*
+  <div id="mymodule">
+  <input value="Raine">
+  </div>
+
+  In creatable itself:
+
+  var newEl = document.createElement("input");
+  newEl.addEventHandler("change", function() {
+    
+  });
+
+  */ 
