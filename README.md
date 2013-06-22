@@ -154,6 +154,10 @@ Unit Tests
 
 **creatable** has full [unit test coverage](https://github.com/RaineOrShine/creatable/tree/master/test) using mocha.
 
+Speed Tests
+===========
+**creatable** [speed tested against underscore] (http://jsperf.com/creatable-vs-underscore-cached-vs-dom) using Benchmark.js
+
 Installation
 ===========
 
