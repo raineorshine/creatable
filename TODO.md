@@ -1,8 +1,10 @@
+* better error handling when attributes accidentally passed as third argument
 * Add more explicit API details
 	- In a table maybe? See how other libraries are doing this
-* Research
+* Research templating language features
 * Define recommended use vs templating
-* Handlebars integration?
+* UVP: Lightweight DOM Generation
+* Side-by-side comparison of jQuery concat, handlebars, and creatable
 
 # data binding
 1. render spans with ids
