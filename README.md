@@ -1,3 +1,11 @@
+# DEPRECATED
+
+Creatable was created a long time ago, long before React. React is I think the realization of the vision of Creatable. It has a similar syntax when ReactDOM is used directly. React solves the performance issue with immutability and virtual DOM diffing, a new standard. And while React does not have anything to say about data binding itself, frameworks like Redux and many others provide opinions about managing data in cooperation with your view. 
+
+In short, I highly recommend React on any size project. In order to reflect the terse, Javascript-centric syntax of Creatable, eschew JSX in favor of [ReactDOM](https://facebook.github.io/react/docs/react-without-jsx.html) or Uber's [r-dom](https://github.com/uber/r-dom). 
+
+---
+
 Create DOM Elements with nestable arrays that reflect the structure of HTML:
 
 ```javascript
